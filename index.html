@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vantos Markets — Creative Production Studio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="webgl-canvas"></div>
+  <div class="grain-overlay"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-text">
+        <span class="loader-word">Vantos</span>
+        <span class="loader-word">Markets</span>
+      </div>
+      <div class="loader-bar">
+        <div class="loader-progress" id="loaderProgress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">
+      <img src="images/vantoslogo_collapse.png" alt="Vantos Markets" class="nav-logo-img" />
+      <span class="nav-logo-text">Vantos Markets</span>
+    </a>
+    <div class="nav-right">
+      <a href="#contact" class="nav-trade-btn">Trade Now</a>
+      <a href="#contact" class="nav-cta">Let's talk</a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Full Screen Menu -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-content">
+      <div class="menu-links">
+        <a href="#about" class="menu-link" data-index="01">About</a>
+        <a href="#work" class="menu-link" data-index="02">Products</a>
+        <a href="#contact" class="menu-link" data-index="03">Contact</a>
+      </div>
+      <div class="menu-footer">
+        <div class="menu-social">
+          <a href="#">Twitter/X</a>
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <!-- Background Video -->
+    <div class="hero-video-wrap">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="images/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Award-Winning Broker
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line">
+          <span class="title-word" data-delay="0">Explore</span>
+          <span class="title-word accent" data-delay="1">CFD</span>
+        </span>
+        <span class="title-line">
+          <span class="title-word" data-delay="2">Markets</span>
+          <span class="title-word" data-delay="3">With</span>
+          <span class="title-word" data-delay="4">Us</span>
+        </span>
+      </h1>
+      <p class="hero-sub">Wherever the market takes you, our suite of trading platforms ensure your preparedness at every stage, delivering powerful trading tools, real-time insights, and a seamless experience for traders on the go.</p>
+      <div class="hero-actions">
+        <button class="btn-open-account" id="openAccountBtn">
+          <span>Open Account</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 13L13 3M13 3H7M13 3v6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- Market Ticker -->
+  <div class="market-ticker" id="marketTicker">
+    <div class="ticker-track" id="tickerTrack">
+      <!-- Items duplicated for seamless loop -->
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="section-container">
+      <div class="about-grid">
+        <div class="about-left">
+          <span class="section-label">About</span>
+          <h2 class="about-title">Every market shift brings limitless possibilities.</h2>
+        </div>
+        <div class="about-right">
+          <p class="about-text">We are the Fastest Growing Multi Asset Brokerage Company in Europe, and have won the ADVFN International Financial Awards.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-number">1,000</span>
+              <span class="stat-label">Trading Pairs</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">0.0</span>
+              <span class="stat-label">Pips</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">2,000x</span>
+              <span class="stat-label">Leverage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expertise-grid">
+        <div class="expertise-item">
+          <span class="expertise-num">01</span>
+          <h3>Fast and Easy Start</h3>
+          <p>Open a live account in minutes, fund it instantly, and start trading across global markets with no complex onboarding.</p>
+        </div>
+        <div class="expertise-item">
+          <span class="expertise-num">02</span>
+          <h3>Wide Range of Investment Options</h3>
+          <p>Access 1,000+ instruments spanning forex, indices, commodities, crypto, and stocks — all from a single account.</p>
+        </div>
+        <div class="expertise-item">
+          <span class="expertise-num">03</span>
+          <h3>User-Friendly Trading Platforms</h3>
+          <p>Trade seamlessly on MT4, MT5, or our proprietary platform — available on desktop, web, and mobile devices.</p>
+        </div>
+        <div class="expertise-item">
+          <span class="expertise-num">04</span>
+          <h3>Transparent Account Conditions</h3>
+          <p>No hidden fees, no requotes. Enjoy tight spreads from 0.0 pips, clear pricing, and full visibility on every trade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work -->
+  <section class="work" id="work">
+    <div class="section-container">
+      <div class="work-header">
+        <span class="section-label">Our Products</span>
+        <h2 class="work-title">What We<br/>Provide</h2>
+      </div>
+      <div class="projects-grid">
+        <a href="#" class="project-card product-card">
+          <div class="project-media">
+            <div class="product-bg" style="--pc1:#00FF88;--pc2:#004d2a">
+              <video class="product-video" autoplay muted loop playsinline>
+                <source src="images/coins.mp4" type="video/mp4" />
+              </video>
+              <svg class="product-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="32" r="14" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="40" cy="32" r="14" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M16 24h32M16 40h32" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Forex</h3>
+            <span class="project-tags">1,000+ currency pairs &middot; 0.0 pip spreads</span>
+          </div>
+        </a>
+        <a href="#" class="project-card product-card">
+          <div class="project-media">
+            <div class="product-bg" style="--pc1:#7D53FF;--pc2:#1a0a4d">
+              <video class="product-video" autoplay muted loop playsinline>
+                <source src="images/coins.mp4" type="video/mp4" />
+              </video>
+              <svg class="product-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="8,48 20,30 30,38 42,18 56,24" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                <circle cx="20" cy="30" r="3" fill="currentColor"/>
+                <circle cx="30" cy="38" r="3" fill="currentColor"/>
+                <circle cx="42" cy="18" r="3" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Indices</h3>
+            <span class="project-tags">US30, GER40, NAS100 &middot; Low margin</span>
+          </div>
+        </a>
+        <a href="#" class="project-card product-card">
+          <div class="project-media">
+            <div class="product-bg" style="--pc1:#ff8c00;--pc2:#3d1f00">
+              <video class="product-video" autoplay muted loop playsinline>
+                <source src="images/coins.mp4" type="video/mp4" />
+              </video>
+              <svg class="product-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 8 C20 8 14 20 18 30 C22 40 16 50 32 56 C48 50 42 40 46 30 C50 20 44 8 32 8Z" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M32 20 C26 26 28 36 32 42 C36 36 38 26 32 20Z" fill="currentColor" opacity="0.4"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Energies</h3>
+            <span class="project-tags">Crude Oil, Natural Gas &middot; 24/5 trading</span>
+          </div>
+        </a>
+        <a href="#" class="project-card product-card">
+          <div class="project-media">
+            <div class="product-bg" style="--pc1:#FFD700;--pc2:#3d2e00">
+              <video class="product-video" autoplay muted loop playsinline>
+                <source src="images/coins.mp4" type="video/mp4" />
+              </video>
+              <svg class="product-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="32,10 38,26 56,26 42,36 48,52 32,42 16,52 22,36 8,26 26,26" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Precious Metals</h3>
+            <span class="project-tags">Gold, Silver, Platinum &middot; Safe haven assets</span>
+          </div>
+        </a>
+        <a href="#" class="project-card product-card">
+          <div class="project-media">
+            <div class="product-bg" style="--pc1:#22c55e;--pc2:#052e16">
+              <video class="product-video" autoplay muted loop playsinline>
+                <source src="images/coins.mp4" type="video/mp4" />
+              </video>
+              <svg class="product-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 52 Q20 20 32 28 Q44 36 52 12" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="32" cy="28" r="4" fill="currentColor"/>
+                <path d="M18 44 Q24 38 32 40 Q40 42 46 36" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Soft Commodities</h3>
+            <span class="project-tags">Coffee, Cocoa, Wheat &middot; Diversify portfolio</span>
+          </div>
+        </a>
+        <a href="#" class="project-card product-card">
+          <div class="project-media">
+            <div class="product-bg" style="--pc1:#38bdf8;--pc2:#0a1e2e">
+              <video class="product-video" autoplay muted loop playsinline>
+                <source src="images/coins.mp4" type="video/mp4" />
+              </video>
+              <svg class="product-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="20" width="44" height="28" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M10 30h44" stroke="currentColor" stroke-width="2"/>
+                <path d="M24 20v-6M40 20v-6" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="32" cy="40" r="4" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>ETFs</h3>
+            <span class="project-tags">S&amp;P 500, MSCI, Bond ETFs &middot; Instant diversification</span>
+          </div>
+        </a>
+        <a href="#" class="project-card product-card">
+          <div class="project-media">
+            <div class="product-bg" style="--pc1:#a78bfa;--pc2:#1e0a3d">
+              <video class="product-video" autoplay muted loop playsinline>
+                <source src="images/coins.mp4" type="video/mp4" />
+              </video>
+              <svg class="product-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="12" width="48" height="40" rx="5" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M8 26h48" stroke="currentColor" stroke-width="2"/>
+                <path d="M20 38h8M36 38h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="32" cy="19" r="3" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>CFD Shares</h3>
+            <span class="project-tags">Apple, Tesla, Amazon &middot; Long &amp; short positions</span>
+          </div>
+        </a>
+        <a href="#" class="project-card product-card">
+          <div class="project-media">
+            <div class="product-bg" style="--pc1:#f472b6;--pc2:#2d0a1a">
+              <video class="product-video" autoplay muted loop playsinline>
+                <source src="images/coins.mp4" type="video/mp4" />
+              </video>
+              <svg class="product-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="16" width="40" height="32" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M22 28h20M22 36h12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M12 24h6M46 24h6" stroke="currentColor" stroke-width="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>CFD Bonds</h3>
+            <span class="project-tags">US Treasury, Gilts, Bunds &middot; Stable returns</span>
+          </div>
+        </a>
+      </div>
+      <div class="work-footer">
+        <a href="#" class="link-arrow">
+          <span>View More</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 10h10M11 6l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="philosophy">
+    <div class="section-container">
+      <div class="philosophy-content">
+        <h2 class="philosophy-text">
+          <span class="phil-line">Always ready for</span>
+          <span class="phil-line">your <em>next move.</em></span>
+          <span class="phil-line">Everything you</span>
+          <span class="phil-line">need and <em>more.</em></span>
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Reel Section -->
+  <section class="reel-section">
+    <div class="reel-container">
+      <div class="reel-visual">
+        <img class="reel-bg-img" src="images/reel-preview.png" alt="Platform Preview" />
+        <div class="reel-gradient"></div>
+        <div class="reel-play">
+          <div class="reel-play-btn">
+            <svg width="24" height="28" viewBox="0 0 16 18" fill="currentColor">
+              <path d="M0 0L16 9L0 18V0Z"/>
+            </svg>
+          </div>
+          <span>Watch Demo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta" id="contact">
+    <div class="section-container">
+      <div class="cta-content">
+        <span class="section-label">Get in touch</span>
+        <h2 class="cta-title">
+          <span class="cta-line">Explore CFD</span>
+          <span class="cta-line">Markets <em>With Us</em></span>
+        </h2>
+        <a href="mailto:business@vantosmarkets.com" class="btn-primary">
+          <span>Contact us</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 15L15 5M15 5H8M15 5v7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="section-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-label">Location</span>
+          <p>Bristol, United Kingdom</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">Contact</span>
+          <a href="mailto:hello@vantosmarkets.com">hello@vantosmarkets.com</a>
+          <a href="mailto:business@vantosmarkets.com">business@vantosmarkets.com</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">Social</span>
+          <div class="footer-social">
+            <a href="#">Twitter/X</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">Newsletter</span>
+          <form class="newsletter-form" onsubmit="event.preventDefault()">
+            <input type="email" placeholder="your@email.com" />
+            <button type="submit">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M5 15L15 5M15 5H8M15 5v7"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Vantos Markets. All rights reserved.</span>
+        <span>Built with passion</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Video Modal -->
+  <div class="video-modal" id="videoModal">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div class="modal-content">
+      <iframe
+        id="youtubePlayer"
+        class="modal-iframe"
+        src=""
+        data-src="https://www.youtube.com/embed/PT7_2DhMEg4?autoplay=1&rel=0&modestbranding=1"
+        title="How to Sign Up — Vantos Markets"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Open Account Modal -->
+  <div class="account-modal-overlay" id="accountModal">
+    <div class="account-modal">
+      <button class="account-modal-close" id="accountModalClose" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 1l16 16M17 1L1 17"/>
+        </svg>
+      </button>
+
+      <h2 class="account-modal-title">Open Live Account</h2>
+
+      <form class="account-form" id="accountForm" onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-group">
+            <label>FirstName <span class="req">*</span></label>
+            <input type="text" placeholder="Please Enter" required />
+          </div>
+          <div class="form-group">
+            <label>LastName <span class="req">*</span></label>
+            <input type="text" placeholder="Please Enter" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" placeholder="Please Enter" required />
+        </div>
+
+        <div class="form-group">
+          <label>Email Verification Code <span class="req">*</span></label>
+          <div class="form-inline">
+            <input type="text" placeholder="Please Enter" />
+            <button type="button" class="btn-send-code">Send Code</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Password <span class="req">*</span></label>
+          <div class="form-password">
+            <input type="password" placeholder="Please Enter" id="accountPassword" required />
+            <button type="button" class="btn-eye" id="togglePassword">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24M1 1l22 22"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Country <span class="req">*</span></label>
+          <div class="form-select-wrap">
+            <select required>
+              <option value=""></option>
+              <option>United Kingdom</option>
+              <option>United States</option>
+              <option>Australia</option>
+              <option>Canada</option>
+              <option>Germany</option>
+              <option>France</option>
+              <option>Singapore</option>
+              <option>United Arab Emirates</option>
+              <option>Hong Kong</option>
+              <option>Japan</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group form-group--narrow">
+            <label>Code <span class="req">*</span></label>
+            <div class="form-select-wrap">
+              <select required>
+                <option value=""></option>
+                <option>+44</option>
+                <option>+1</option>
+                <option>+61</option>
+                <option>+49</option>
+                <option>+33</option>
+                <option>+65</option>
+                <option>+971</option>
+                <option>+852</option>
+                <option>+81</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-group--wide">
+            <label>Phone <span class="req">*</span></label>
+            <input type="tel" placeholder="Please Enter" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Referred By</label>
+          <input type="text" placeholder="Please Enter" />
+        </div>
+
+        <div class="form-radio-group">
+          <label class="radio-label">
+            <input type="radio" name="accountType" value="individual" checked />
+            <span class="radio-custom"></span>
+            Individual
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="accountType" value="company" />
+            <span class="radio-custom"></span>
+            Company
+          </label>
+        </div>
+
+        <button type="submit" class="btn-create-account">Create Account</button>
+
+        <p class="form-disclaimer">
+          By continuing, I acknowledge and agree to the <a href="#">Privacy Policy</a>. I also agree that a representative of Vantos Markets may contact me to assist with my application.
+        </p>
+
+        <div class="form-footer-links">
+          <a href="#">Practice Trading</a>
+          <span>/</span>
+          <a href="#">Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="script.js?v=3"></script>
+</body>
+</html>
