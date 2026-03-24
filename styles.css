@@ -1072,7 +1072,7 @@ body.cursor-hover .cursor-ring {
 
 .stat-label {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: #ffffff;
   letter-spacing: 0.03em;
 }
 
