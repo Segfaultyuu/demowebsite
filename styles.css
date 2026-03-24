@@ -1677,6 +1677,16 @@ body.cursor-hover .cursor-ring {
 }
 
 @media (max-width: 768px) {
+  .loader-text {
+    font-size: clamp(1.6rem, 10vw, 3rem);
+    letter-spacing: 0.05rem;
+    gap: 0.8rem;
+  }
+
+  .loader-bar {
+    width: 140px;
+  }
+
   .hero {
     padding: 6rem 1.5rem 4rem;
   }
